@@ -1,5 +1,5 @@
-NGINX_PATH=/usr/local/nginx
+NGINX_PATH=/usr/local/sbin/nginx
 
 
-sudo $NGINX_PATH/sbin/nginx -s stop
+$NGINX_PATH -s stop
 echo "Stop NGINX Server ========="

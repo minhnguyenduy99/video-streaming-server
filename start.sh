@@ -1,21 +1,18 @@
-NGINX_PATH=/usr/local/nginx
-EXEC_NGINX_PATH=$NGINX_PATH/sbin/nginx
+EXEC_NGINX_PATH=/usr/local/sbin/nginx
 
-sudo mkdir -p tmp   
-sudo mkdir -p tmp/record
-sudo find ./tmp -type d -exec sudo chown -R nobody: {} +
+mkdir -p tmp   
+mkdir -p tmp/record
+find ./tmp -type d -exec chown -R nobody:root {} +
 
-
-sudo truncate -s 0 $NGINX_PATH/logs/error.log
-sudo truncate -s 0 $NGINX_PATH/logs/access.log
-sudo cp ./nginx.conf $NGINX_PATH/conf/nginx.conf
+# truncate -s 0 /var/log/nginx/error.log
+# truncate -s 0 /var/log/nginx/access.log
 echo "Apply new configuration =========="
 
-sudo $EXEC_NGINX_PATH -t     # Validate configuration
+$EXEC_NGINX_PATH -t     # Validate configuration
 echo "Test NGINX configuration ========="
 
 # bash ./stats.sh
 # echo "Create stats folder =============="
 
-sudo $EXEC_NGINX_PATH
+$EXEC_NGINX_PATH -g "daemon off;"
 echo "Run NGINX Server ================="

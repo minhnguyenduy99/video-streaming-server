@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RECORD_FOLDER_DIR=/home/h17airwalk/stream-server/rtmp-server/tmp/record
-HLS_FOLDER_DIR=/home/h17airwalk/stream-server/rtmp-server/tmp/record/hls
+RECORD_FOLDER_DIR=/nginx-streaming-server/tmp/record
+HLS_FOLDER_DIR=/nginx-streaming-server/tmp/record/hls
 file=""
 
 ## Use this command for sudo only
@@ -29,6 +29,8 @@ while getopts "f:r:" opt; do
     esac
 done
 
+
+
 record_folder="${HLS_FOLDER_DIR}/${record_name}"
 
 mkdir $record_folder
@@ -46,4 +48,9 @@ ffmpeg -i $file \
     -f hls -hls_time 20 -hls_list_size 0 \
     -hls_segment_filename "${record_folder}/v%v/file-%Y%m%d-%%03d.ts" \
     "${record_folder}/v%v/index.m3u8"
+
+
+
+
+
 

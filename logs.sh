@@ -1,7 +1,7 @@
-NGINX_PATH=/usr/local/nginx
+NGINX_LOGS_PATH=/var/log/nginx
 
 echo "==== ERROR LOGS ===="
-sudo cat $NGINX_PATH/logs/error.log
+echo > $NGINX_LOGS_PATH/error.log
 
 echo "==== ACCESS LOGS ===="
-sudo cat $NGINX_PATH/logs/access.log
+echo > $NGINX_LOGS_PATH/access.log
